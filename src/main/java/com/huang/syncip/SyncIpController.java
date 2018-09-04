@@ -15,12 +15,12 @@ import java.io.InputStreamReader;
 public class SyncIpController {
     private static final Logger LOGGER = LoggerFactory.getLogger(SyncIpController.class);
     private static String oldIp;
-    private static String ipChangeShell = "sh /etc/nginx/changeIp.sh";
+    private static String ipChangeShell = "sh /root/syncip/changeIp.sh";
 
 
     static {
         try {
-            Process process = Runtime.getRuntime().exec("cat /etc/nginx/ip");
+            Process process = Runtime.getRuntime().exec("cat /root/syncip/ip");
             BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
             oldIp = br.readLine();
         } catch (IOException e) {
